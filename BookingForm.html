@@ -1,8 +1,38 @@
-<form id="booking-form">
-  <label>Name: <input type="text" name="name" required></label><br>
-  <label>Email: <input type="email" name="email" required></label><br>
-  <label>Date: <input type="date" name="date" required></label><br>
-  <label>Start Time: <input type="time" name="start_time" required></label><br>
-  <label>End Time: <input type="time" name="end_time" required></label><br>
-  <button type="submit">Book Now</button>
+<form id="booking-form" action="/submit-booking" method="post">
+  <fieldset>
+    <legend>Booking Details</legend>
+    <div>
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+    </div>
+    <div>
+      <label for="date">Date:</label>
+      <input type="date" id="date" name="date" required>
+    </div>
+    <div>
+      <label for="start_time">Start Time:</label>
+      <input type="time" id="start_time" name="start_time" required>
+    </div>
+    <div>
+      <label for="end_time">End Time:</label>
+      <input type="time" id="end_time" name="end_time" required>
+    </div>
+    <button type="submit">Book Now</button>
+  </fieldset>
 </form>
+
+<script>
+  document.getElementById('booking-form').addEventListener('submit', function(event) {
+    const start = document.getElementById('start_time').value;
+    const end = document.getElementById('end_time').value;
+    if (start >= end) {
+      alert('End time must be after start time!');
+      event.preventDefault();
+    }
+  });
+</script>
+
